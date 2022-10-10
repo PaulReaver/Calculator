@@ -1,17 +1,38 @@
 //Initial array of numbers
-let array = [0, null, null];
+let array = [0, null, 0];
 
 //Initial display of 0
 let displayResult = document.querySelector("#display-result");
 displayResult.textContent = array[0];
 
+//Gets user number depending if there is an operator selected
 for (let i = 0; i <= 9; i++) {
     document.querySelector(`#num${i}`).addEventListener("click", () => {
         if (array[1] == null) {
             array[0] = String(array[0]).concat(i);
             array[0] = +array[0];
             displayResult.textContent = array[0];
+        } else {
+            array[2] = String(array[2]).concat(i);
+            array[2] = +array[2];
+            displayResult.textContent = `${array[0]} ${array[1]} ${array[2]}`;
         }
+    })
+}
+
+//Get an operator
+for (let i = 1; i <= 4; i++) {
+    document.querySelector(`#op${i}`).addEventListener("click", () => {
+        if (`#op${i}` == "#op1") {
+            array[1] = "+";
+        } else if (`#op${i}` == "#op2") {
+            array[1] = "-";
+        } else if (`#op${i}` == "#op3") {
+            array[1] = "*";
+        } else {
+            array[1] = "/";
+        }
+        displayResult.textContent = `${array[0]} ${array[1]}`;
     })
 }
 
