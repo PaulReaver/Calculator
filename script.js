@@ -1,25 +1,36 @@
-//Initial array of numbers
+//Initializes array with numbers and operator
 let array = [0, null, 0];
 
-//Initial display of 0
+//Displays 0 at the beginning
 let displayResult = document.querySelector("#display-result");
 displayResult.textContent = array[0];
 
-//By pressing equals sign the calculator operates
+//Resets the calculator values when the user presses the clear button
+document.querySelector("#clear").addEventListener("click", () => {
+    array[0] = 0;
+    array[1] = null;
+    array[2] = 0;
+    displayResult.textContent = array[0];
+})
+
+//Operates when the user presses the equals button
 document.querySelector("#equals").addEventListener("click", () => {
+    //Checks if there is an operator already selected so it can skip the function
     if (array[1] == null) {
         return;
     }
+    //Operates and resets values of the array
     array[0] = operate(array[0], array[1], array[2]);
     array[1] = null;
     array[2] = 0;
     displayResult.textContent = array[0];
+    //Resets the first number to 0 if there is an error
     if (array[0] == "error") {
         array[0] = 0;
     }
 })
 
-//Gets user number depending if there is an operator selected
+//Gets user number depending whether there is an operator selected
 for (let i = 0; i <= 9; i++) {
     document.querySelector(`#num${i}`).addEventListener("click", () => {
         if (array[1] == null) {
