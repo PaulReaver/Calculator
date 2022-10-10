@@ -5,6 +5,17 @@ let array = [0, null, 0];
 let displayResult = document.querySelector("#display-result");
 displayResult.textContent = array[0];
 
+//By pressing equals sign the calculator operates
+document.querySelector("#equals").addEventListener("click", () => {
+    if (array[1] == null) {
+        return;
+    }
+    array[0] = operate(array[0], array[1], array[2]);
+    array[1] = null;
+    array[2] = 0;
+    displayResult.textContent = array[0];
+})
+
 //Gets user number depending if there is an operator selected
 for (let i = 0; i <= 9; i++) {
     document.querySelector(`#num${i}`).addEventListener("click", () => {
@@ -53,11 +64,14 @@ function multiply(a, b) {
 
 //Function that performs division
 function divide(a, b) {
+    if (b == 0) {
+        return 0;
+    }
     return a / b;
 }
 
 //Function responsible for calling the right function to perform an operation
-function operate(x, y, operator) {
+function operate(x, operator, y) {
     let result;
     if (operator == "+") {
         result = add(x, y);
@@ -68,7 +82,7 @@ function operate(x, y, operator) {
     } else if (operator == "/") {
         result = divide(x, y);
     }
-    console.log(result);
+    return result;
 }
 
 
