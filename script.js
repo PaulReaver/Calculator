@@ -34,9 +34,13 @@ for (let i = 0; i <= 9; i++) {
     })
 }
 
-//Get an operator
+//Gets an operator
 for (let i = 1; i <= 4; i++) {
     document.querySelector(`#op${i}`).addEventListener("click", () => {
+        if (array[1] != null) {
+            array[0] = operate(array[0], array[1], array[2]);
+            array[2] = 0;
+        }
         if (`#op${i}` == "#op1") {
             array[1] = "+";
         } else if (`#op${i}` == "#op2") {
