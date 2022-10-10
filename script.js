@@ -1,3 +1,20 @@
+//Initial array of numbers
+let array = [0, null, null];
+
+//Initial display of 0
+let displayResult = document.querySelector("#display-result");
+displayResult.textContent = array[0];
+
+for (let i = 0; i <= 9; i++) {
+    document.querySelector(`#num${i}`).addEventListener("click", () => {
+        if (array[1] == null) {
+            array[0] = String(array[0]).concat(i);
+            array[0] = +array[0];
+            displayResult.textContent = array[0];
+        }
+    })
+}
+
 //Function that perform addition
 function add(a, b) {
     return a + b;
@@ -32,7 +49,5 @@ function operate(x, y, operator) {
     }
     console.log(result);
 }
-
-operate(5, 2, "/");
 
 

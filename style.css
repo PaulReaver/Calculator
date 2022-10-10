@@ -45,7 +45,7 @@ body {
     transform: scale(.9, .9);
 }
 
-#display-text {
+#display-result {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-right: 20px;
     margin-bottom: 10px;
