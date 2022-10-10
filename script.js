@@ -14,6 +14,9 @@ document.querySelector("#equals").addEventListener("click", () => {
     array[1] = null;
     array[2] = 0;
     displayResult.textContent = array[0];
+    if (array[0] == "error") {
+        array[0] = 0;
+    }
 })
 
 //Gets user number depending if there is an operator selected
@@ -65,7 +68,7 @@ function multiply(a, b) {
 //Function that performs division
 function divide(a, b) {
     if (b == 0) {
-        return 0;
+        return "error";
     }
     return a / b;
 }
