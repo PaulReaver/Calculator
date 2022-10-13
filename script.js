@@ -26,6 +26,24 @@ document.querySelector("#backspace").addEventListener("click", () => {
     }
 })
 
+//Adds a decimal point when the user presses the decimal button
+document.querySelector("#decimal").addEventListener("click", () => {
+    if (array[1] == null) {
+        array[0] = String(array[0]);
+        if (array[0].includes(".") == false) {
+            array[0] = array[0].concat(".");
+            displayResult.textContent = array[0];
+        }
+
+    } else if (array[1] != null) {
+        array[2] = String(array[2]);
+        if (array[2].includes(".") == false) {
+            array[2] = array[2].concat(".");
+            displayResult.textContent = `${array[0]} ${array[1]} ${array[2]}`;
+        }
+    }
+})
+
 //Operates when the user presses the equals button
 document.querySelector("#equals").addEventListener("click", () => {
     //Checks if there is an operator already selected so it can skip the function
