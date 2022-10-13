@@ -11,6 +11,19 @@ document.querySelector("#clear").addEventListener("click", () => {
     array[1] = null;
     array[2] = 0;
     displayResult.textContent = array[0];
+});
+
+//Deletes a digit when the user presses the backspace button
+document.querySelector("#backspace").addEventListener("click", () => {
+    if (array[1] == null) {
+        array[0] = String(array[0]).slice(0, -1);
+        array[0] = +array[0];
+        displayResult.textContent = array[0];
+    } else {
+        array[2] = String(array[2]).slice(0, -1);
+        array[2] = +array[2];
+        displayResult.textContent = `${array[0]} ${array[1]} ${array[2]}`;
+    }
 })
 
 //Operates when the user presses the equals button
