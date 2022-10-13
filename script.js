@@ -1,5 +1,5 @@
 //Initializes array with numbers and operator
-let array = ["0", null, "0"];
+let array = ["", null, ""];
 
 //Displays 0 at the beginning
 let displayResult = document.querySelector("#display-result");
@@ -7,9 +7,9 @@ displayResult.textContent = array[0];
 
 //Resets the calculator values when the user presses the clear button
 document.querySelector("#clear").addEventListener("click", () => {
-    array[0] = "0";
+    array[0] = "";
     array[1] = null;
-    array[2] = "0";
+    array[2] = "";
     displayResult.textContent = array[0];
 });
 
@@ -51,11 +51,11 @@ document.querySelector("#equals").addEventListener("click", () => {
     array[0] = operate(array[0], array[1], array[2]);
     array[0] = String(array[0]);
     array[1] = null;
-    array[2] = "0";
+    array[2] = "";
     displayResult.textContent = array[0];
     //Resets the first number to 0 if there is an error
     if (array[0] == "error") {
-        array[0] = "0";
+        array[0] = "";
     }
 })
 
@@ -78,7 +78,7 @@ for (let i = 1; i <= 4; i++) {
         if (array[1] != null) {
             array[2] = +array[2]; 
             array[0] = operate(array[0], array[1], array[2]);
-            array[2] = "0";
+            array[2] = "";
         }
         array[0] = +array[0];
         if (`#op${i}` == "#op1") {
