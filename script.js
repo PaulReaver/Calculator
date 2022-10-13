@@ -1,5 +1,5 @@
 //Initializes array with numbers and operator
-let array = [0, null, 0];
+let array = ["0", null, "0"];
 
 //Displays 0 at the beginning
 let displayResult = document.querySelector("#display-result");
@@ -7,21 +7,19 @@ displayResult.textContent = array[0];
 
 //Resets the calculator values when the user presses the clear button
 document.querySelector("#clear").addEventListener("click", () => {
-    array[0] = 0;
+    array[0] = "0";
     array[1] = null;
-    array[2] = 0;
+    array[2] = "0";
     displayResult.textContent = array[0];
 });
 
 //Deletes a digit when the user presses the backspace button
 document.querySelector("#backspace").addEventListener("click", () => {
     if (array[1] == null) {
-        array[0] = String(array[0]).slice(0, -1);
-        array[0] = +array[0];
+        array[0] = array[0].slice(0, -1);
         displayResult.textContent = array[0];
     } else {
-        array[2] = String(array[2]).slice(0, -1);
-        array[2] = +array[2];
+        array[2] = array[2].slice(0, -1);
         displayResult.textContent = `${array[0]} ${array[1]} ${array[2]}`;
     }
 })
@@ -29,14 +27,12 @@ document.querySelector("#backspace").addEventListener("click", () => {
 //Adds a decimal point when the user presses the decimal button
 document.querySelector("#decimal").addEventListener("click", () => {
     if (array[1] == null) {
-        array[0] = String(array[0]);
         if (array[0].includes(".") == false) {
             array[0] = array[0].concat(".");
             displayResult.textContent = array[0];
         }
 
     } else if (array[1] != null) {
-        array[2] = String(array[2]);
         if (array[2].includes(".") == false) {
             array[2] = array[2].concat(".");
             displayResult.textContent = `${array[0]} ${array[1]} ${array[2]}`;
@@ -51,13 +47,15 @@ document.querySelector("#equals").addEventListener("click", () => {
         return;
     }
     //Operates and resets values of the array
+    array[2] = +array[2];
     array[0] = operate(array[0], array[1], array[2]);
+    array[0] = String(array[0]);
     array[1] = null;
-    array[2] = 0;
+    array[2] = "0";
     displayResult.textContent = array[0];
     //Resets the first number to 0 if there is an error
     if (array[0] == "error") {
-        array[0] = 0;
+        array[0] = "0";
     }
 })
 
@@ -65,12 +63,10 @@ document.querySelector("#equals").addEventListener("click", () => {
 for (let i = 0; i <= 9; i++) {
     document.querySelector(`#num${i}`).addEventListener("click", () => {
         if (array[1] == null) {
-            array[0] = String(array[0]).concat(i);
-            array[0] = +array[0];
+            array[0] = array[0].concat(i);
             displayResult.textContent = array[0];
         } else {
-            array[2] = String(array[2]).concat(i);
-            array[2] = +array[2];
+            array[2] = array[2].concat(i);
             displayResult.textContent = `${array[0]} ${array[1]} ${array[2]}`;
         }
     })
@@ -80,9 +76,11 @@ for (let i = 0; i <= 9; i++) {
 for (let i = 1; i <= 4; i++) {
     document.querySelector(`#op${i}`).addEventListener("click", () => {
         if (array[1] != null) {
+            array[2] = +array[2]; 
             array[0] = operate(array[0], array[1], array[2]);
-            array[2] = 0;
+            array[2] = "0";
         }
+        array[0] = +array[0];
         if (`#op${i}` == "#op1") {
             array[1] = "+";
         } else if (`#op${i}` == "#op2") {
