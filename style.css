@@ -16,7 +16,7 @@ body {
     width: 300px;
     background-color: #121212;
     border-radius: 20px;
-    box-shadow: 0px 5px 8px
+    box-shadow: 0px 5px 8px;
 }
 
 .display-container {
@@ -63,8 +63,8 @@ body {
     background-color: #2e2e2e;
 }
 
-.buttons-container>button:active {
-    transform: scale(.9, .9);
+.buttons-container > button:active {
+    transform: scale(0.9, 0.9);
 }
 
 #display-result {
